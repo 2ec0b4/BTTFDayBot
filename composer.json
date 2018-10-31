@@ -1,0 +1,6 @@
+{
+    "require": {
+        "j7mbo/twitter-api-php": "^1.0",
+        "vlucas/phpdotenv": "^2.5"
+    }
+}
