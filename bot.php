@@ -67,7 +67,12 @@ $postfields = array(
 );
 
 try {
-    $twitter->request($url, $requestMethod, $postfields);
+    $result = $twitter->request($url, $requestMethod, $postfields);
+    $result = @json_decode($result, true);
 } catch(Exception $e) {
     die('Twitter Status Error: ' . $e->getMessage());
+}
+
+if (isset($result['id'])) {
+    echo 'https://twitter.com/'.$_ENV['ACCOUNT_NAME'].'/status/'.$result['id'];
 }
