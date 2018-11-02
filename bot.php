@@ -22,7 +22,7 @@ $err = curl_error($curl);
 curl_close($curl);
 
 if ($err) {
-    die('cURL Error:' . $err);
+    die('cURL Error: ' . $err);
 }
 
 require_once __DIR__ .'/vendor/autoload.php';
@@ -55,7 +55,7 @@ try {
 
     $mediaId = $data['media_id'];
 } catch(Exception $e) {
-    die('Twitter Upload Error:' . $e->getMessage());
+    die('Twitter Upload Error: ' . $e->getMessage());
 }
 
 $url = 'https://api.twitter.com/1.1/statuses/update.json';
@@ -69,5 +69,5 @@ $postfields = array(
 try {
     $twitter->request($url, $requestMethod, $postfields);
 } catch(Exception $e) {
-    die('Twitter Status Error:' . $e->getMessage());
+    die('Twitter Status Error: ' . $e->getMessage());
 }
