@@ -3,7 +3,8 @@
 
 ini_set('date.timezone', 'Europe/Paris');
 
-$filepath = date('Y/m/d').'.jpg';
+$today = new DateTime();
+$filepath = $today->format('Y/m/d').'.jpg';
 
 $curl = curl_init();
 curl_setopt_array($curl, array(
@@ -65,6 +66,16 @@ $postfields = array(
     'status' => "It's today!",
     'media_ids' => $mediaId
 );
+
+switch($today->format('d/m')) {
+    case '25/12':
+        $postfields['status'] .= ' And happy christmas! 🎁 🎄 🎅';
+        break;
+
+    case '01/01':
+        $postfields['status'] .= ' And happy new year! 🎉';
+        break;
+}
 
 try {
     $result = $twitter->request($url, $requestMethod, $postfields);
